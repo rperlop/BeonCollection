@@ -1,0 +1,6 @@
+@BeonCollection.Api_HostAddress = http://localhost:5068
+
+GET {{BeonCollection.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
