@@ -42,3 +42,20 @@ public enum EditionType
     Collectors,
     Steelbook
 }
+
+public enum Contents
+{
+    LooseGame,
+    WithBox,
+    Complete,
+    Sealed
+}
+
+public enum Condition
+{
+    Mint,
+    VeryGood,
+    Good,
+    Fair,
+    Poor
+}

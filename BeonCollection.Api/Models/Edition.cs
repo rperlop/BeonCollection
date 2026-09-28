@@ -12,4 +12,5 @@ public class Edition
     public EditionType Type { get; set; }
 
     public int? Year { get; set; }
+    public List<Copy> Copies { get; set; } = new();
 }

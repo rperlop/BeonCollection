@@ -11,4 +11,5 @@ public class BeonDbContext : DbContext
 
     public DbSet<Game> Games => Set<Game>();
     public DbSet<Edition> Editions => Set<Edition>();
+    public DbSet<Copy> Copies => Set<Copy>();
 }
