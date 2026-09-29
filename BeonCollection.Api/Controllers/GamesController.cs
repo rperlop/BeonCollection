@@ -4,6 +4,7 @@ using BeonCollection.Api.Dtos;
 using BeonCollection.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BeonCollection.Api.Controllers;
 
@@ -47,6 +48,7 @@ public class GamesController : ControllerBase
         return game;
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<GameDto>> Create(CreateGameDto dto)
     {
