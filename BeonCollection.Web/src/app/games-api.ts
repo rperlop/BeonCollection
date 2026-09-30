@@ -12,4 +12,8 @@ export class GamesApi {
   getGames(): Observable<GameDto[]> {
     return this.http.get<GameDto[]>(`${API_URL}/games`);
   }
+
+  createGame(title: string): Observable<GameDto> {
+    return this.http.post<GameDto>(`${API_URL}/games`, { title });
+  }
 }

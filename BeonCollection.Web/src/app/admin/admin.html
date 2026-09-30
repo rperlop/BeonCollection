@@ -1,2 +1,26 @@
-<h2>Panel de administración</h2>
-<p>Aquí irá la gestión de juegos, ediciones y ejemplares.</p>
+<header class="admin-header">
+  <h2>Panel de administración</h2>
+  <button type="button" (click)="logout()">Cerrar sesión</button>
+</header>
+
+<section>
+  <h3>Nuevo juego</h3>
+
+  <form (ngSubmit)="createGame()">
+    <label>
+      Título
+      <input type="text" name="title" [(ngModel)]="title" required />
+    </label>
+
+    <button type="submit" [disabled]="saving() || !title.trim()">
+      {{ saving() ? 'Guardando...' : 'Crear juego' }}
+    </button>
+  </form>
+
+  @if (success()) {
+    <p class="success">{{ success() }}</p>
+  }
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+</section>
