@@ -10,6 +10,7 @@ namespace BeonCollection.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class GamesController : ControllerBase
 {
     private readonly BeonDbContext _db;
@@ -27,6 +28,7 @@ public class GamesController : ControllerBase
         _db = db;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<List<GameDto>>> GetAll([FromQuery] Platform? platform)
     {
@@ -40,6 +42,7 @@ public class GamesController : ControllerBase
         return await query.OrderBy(g => g.Title).Select(ToDto).ToListAsync();
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<GameDto>> GetById(int id)
     {
@@ -63,5 +66,34 @@ public class GamesController : ControllerBase
 
         var result = new GameDto(game.Id, game.Title, new List<EditionDto>());
         return CreatedAtAction(nameof(GetById), new { id = game.Id }, result);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, CreateGameDto dto)
+    {
+        if (string.IsNullOrWhiteSpace(dto.Title))
+        {
+            return BadRequest("Title is required.");
+        }
+
+        var game = await _db.Games.FindAsync(id);
+        if (game is null) return NotFound();
+
+        game.Title = dto.Title.Trim();
+        await _db.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var game = await _db.Games.FindAsync(id);
+        if (game is null) return NotFound();
+
+        _db.Games.Remove(game);
+        await _db.SaveChangesAsync();
+
+        return NoContent();
     }
 }
