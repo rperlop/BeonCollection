@@ -1,0 +1,18 @@
+<button
+  type="button"
+  class="spine"
+  [style.width.rem]="platformStyle().widthRem"
+  [style.height.rem]="platformStyle().heightRem"
+  [style.background]="bodyPalette().bg"
+  [style.color]="bodyPalette().text"
+>
+  <span class="spine-shine"></span>
+
+  <span class="spine-band" [style.background]="platformStyle().bandBg" [style.color]="platformStyle().bandText">
+    {{ platformStyle().label }}
+  </span>
+
+  <span class="spine-title">{{ title }}</span>
+
+  <span class="spine-band-below" [style.background]="platformStyle().bandBg" [style.color]="platformStyle().bandText"></span>
+</button>

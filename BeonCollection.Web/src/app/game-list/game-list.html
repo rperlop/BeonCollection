@@ -1,27 +1,24 @@
-<h2>Mi colección</h2>
+<h2 class="collection-title">Mi colección</h2>
 
 @if (loading()) {
   <p>Cargando...</p>
 } @else if (error()) {
   <p>{{ error() }}</p>
+} @else if (shelves().length === 0) {
+  <p>No hay juegos todavía.</p>
 } @else {
-  @for (game of games(); track game.id) {
-    <article class="game">
-      <h3>{{ game.title }}</h3>
-      <ul>
-        @for (edition of game.editions; track edition.id) {
-          <li>
-            {{ edition.platform }} · {{ edition.region }} · {{ edition.type }}
-            @if (edition.year) {
-              ({{ edition.year }})
-            }
-          </li>
-        } @empty {
-          <li>Sin ediciones</li>
+  @for (shelf of shelves(); track shelf.platform) {
+    <section class="shelf">
+      <h3 class="shelf-header">{{ shelf.platform }}</h3>
+      <div class="shelf-row">
+        @for (item of shelf.items; track item.editionId) {
+          <app-game-spine
+            [title]="item.title"
+            [platform]="item.platform"
+            (click)="onSpineClick(item)"
+          />
         }
-      </ul>
-    </article>
-  } @empty {
-    <p>No hay juegos todavía.</p>
+      </div>
+    </section>
   }
 }

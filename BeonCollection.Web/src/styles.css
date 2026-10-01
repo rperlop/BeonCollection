@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #15161a;
+  --surface: #1f2128;
+  --text: #e8e6df;
+  --text-muted: #8b8578;
+  --accent: #c4432b;
+  --border: rgba(255, 255, 255, 0.1);
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+a {
+  color: var(--accent);
+}

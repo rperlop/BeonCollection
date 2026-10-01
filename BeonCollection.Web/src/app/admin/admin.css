@@ -1,0 +1,94 @@
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.admin-header h2 {
+  font-size: 1.3rem;
+}
+
+.admin-header button {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-header button:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+section {
+  max-width: 26rem;
+}
+
+section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+section label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+section input {
+  padding: 0.6rem 0.7rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+section input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+section button[type='submit'] {
+  padding: 0.65rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+section button[type='submit']:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.success {
+  color: #6fa88a;
+  font-size: 0.85rem;
+}
+
+.error {
+  color: #e06a53;
+  font-size: 0.85rem;
+}
